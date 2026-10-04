@@ -1,0 +1,32 @@
+Make a Socratic explainer video with showtime: "Move 37 and the chain of thought". It is one of three entries in a blind comparison: the same brief goes to three AI models, and viewers vote on which video explains the idea best. Make yours the one people remember.
+
+THE QUESTION. Last week an AlphaGo co-author argued in MIT Technology Review that LLMs don't truly reason: AlphaGo found its famous Move 37 by pairing intuition with search, while an LLM's chain of thought is intuition run longer, with no checkable record, and often written after the fact. Others answered that humans have the same flaws, and that pencil, paper and the scientific method are what make human reasoning trustworthy. Explain the idea and let the viewer think it through. Take no side; end on the open question.
+
+READ FIRST: ../shared/facts.md (every fact you may use, with sources), ../shared/alphago-lee-sedol-game2.sgf (the real game), ../shared/reasoning_traces.json (real reasoning text from a model run on this machine; it is being generated now, wait for it if it is missing). Facts outside facts.md need a source in your claims.md.
+
+THE FOUR QUESTIONS (use exactly these, in this order; the video pauses at each one):
+Q1 "Which part of AlphaGo found Move 37?"  A) The intuition  B) The search  C) Both.  Answer C: the policy network gave it a 1 in 10,000 chance; the search still chose it.
+Q2 "Is a chain of thought a search?"  A) Yes  B) No  C) Partly.  Answer C: it can write "wait" and change course, and be sampled many times, but nothing checks each step.
+Q3 "When Claude 3.7 Sonnet used a hint it was given, how often did its reasoning say so?"  A) About 90%  B) About 50%  C) About 25%.  Answer C (Chen et al., 2025).
+Q4 "What would make a chain of thought trustworthy?"  A) Thinking longer  B) A record you can check, and checking it  C) A bigger model.  Answer B.
+Suggested arc: Seoul, game 2, the real board and Move 37 -> Q1 -> how an LLM writes, one token at a time (show real reasoning text) -> Q2 -> the 36 + 59 finding -> Q3 -> the two sides (intuition plus search vs "humans too, give models the tools") -> Q4 -> close on the open question.
+
+LOOK AND FEEL: this must be visually striking, not slides and not Manim. Use showtime's HTML/canvas route with real-time 3D (WebGL, e.g. three.js vendored locally; no network at render time): a lit, cinematic Go board with the real stones of game 2 placed move by move up to Move 37, the camera moving, Move 37 landing; a search tree blooming out of the board (labelled illustration); reasoning text streaming as tokens; the 36 + 59 paths as a clear diagram (labelled after Anthropic, 2025). Strong typography, depth, light, purposeful motion. Every frame should look designed.
+
+FAIRNESS RULES (the vote is blind):
+- Do NOT name, show or hint at any AI model, product or company as the maker of this video: not in the video, poster, captions, HTML title, chapter names, file names or metadata. (Naming models as subjects of the facts, e.g. Claude 3.7 Sonnet in Q3 or gpt-oss-120b on its reasoning text, is required and fine.)
+- End card: "Socratic #2 · made with showtime" and "github.com/FavioVazquez/socratic-showtime". Nothing else about who made it.
+- Narration voice: Kokoro af_heart, default speed, local (no API keys). Same for all entries.
+- Do not read or copy any other folder under ~/viral/m37/ except ../shared/.
+- 1920x1080, 30 fps, 75-90 seconds, loudness -14 LUFS. Network access and installing packages are approved.
+
+SOCRATIC FORMAT: each question beat in the MP4 = the voice asks it, the choices appear (A/B/C), a 3-second "Pause and think" countdown (no voice, music low), then the reveal. Each beat is its own chapter.
+
+PROCESS: showtime in quality mode (the default). Keep a claims ledger. One preview, look at contact sheets of every scene at full size, fix, final render, qa, a critic round, fix what the critic finds and RE-RENDER. This machine is shared by three renders: use at most 20 threads. Check early how long a WebGL frame takes to render and keep the final render under about 30 minutes.
+
+DELIVER in ./deliver/:
+- move37-1920x1080.mp4 (final, checked)
+- move37.html (`showtime export html --target artifact`, chapters at each beat)
+- socratic.json: {"title": "...", "questions": [{"id": "q1", "pause": <s: countdown starts>, "resume": <s: reveal starts>, "prompt": "...", "choices": [...], "answer": <index>, "feedback": ["<line if the viewer picks choice 0>", "<choice 1>", "<choice 2>"]}, ...]} with times read from your timeline.
+- poster.png (1920x1080), claims.md (every fact with its source), and NOTES.md (what you made and why, in 10 lines).
+Report when deliver/ is complete.

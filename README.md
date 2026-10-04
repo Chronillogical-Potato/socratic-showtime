@@ -10,6 +10,7 @@ A normal explainer tells you the answer while you nod along. These stop at the k
 
 | | video | questions | length |
 |---|---|---|---|
+| 2 | [**Move 37 and the chain of thought**](https://faviovazquez.github.io/socratic-showtime/move37/): three frontier models, one brief, a blind vote | 4 | ~90 s each |
 | 1 | [**Ramanujan's hidden step**](https://faviovazquez.github.io/socratic-showtime/ramanujan/): his 1911 nested radical, and the step even his own solution skipped | 4 | 82 s |
 
 ## Ramanujan's hidden step

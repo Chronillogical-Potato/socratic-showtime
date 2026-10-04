@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Move 37 and the chain of thought · Socratic</title>
+<meta name="description" content="Three frontier models, one brief: a Socratic explainer of Move 37 and the chain of thought. Watch blind, then vote.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://faviovazquez.github.io/socratic-showtime/move37/">
+<meta property="og:title" content="Move 37 and the chain of thought">
+<meta property="og:description" content="Three frontier models, one brief. Watch blind, then vote.">
+<meta property="og:image" content="https://faviovazquez.github.io/socratic-showtime/move37/card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://faviovazquez.github.io/socratic-showtime/move37/card.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="../socratic/socratic.css">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #0b0f17; color: #eef1f6; font-family: Inter, system-ui, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: clamp(20px, 4vw, 48px) 16px 48px; display: grid; gap: 20px; }
+  .kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #f2c14e; }
+  h1 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: clamp(28px, 5vw, 46px); line-height: 1.1; margin: 8px 0; text-wrap: balance; }
+  .lede { color: #9aa4b5; font-size: clamp(15px, 2vw, 18px); line-height: 1.5; margin: 0; max-width: 68ch; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tabs button { font: inherit; font-weight: 700; font-size: 18px; color: #eef1f6; background: #111724; border: 1px solid #2a3344; border-radius: 10px; padding: 10px 22px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { border-color: #f2c14e; color: #f2c14e; }
+  .entry[hidden] { display: none; }
+  .notes { display: grid; gap: 10px; color: #9aa4b5; font-size: 15px; line-height: 1.55; max-width: 72ch; }
+  .notes a, footer a { color: #eef1f6; }
+  footer { color: #6f7a8c; font-size: 13px; border-top: 1px solid #2a3344; padding-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">Socratic · 2 · blind test</div>
+    <h1>Move 37 and the chain of thought</h1>
+    <p class="lede">Three frontier models (Claude Opus 5.5, GPT-6 Astra, Grok 4.7) got the same brief, the same fact sheet and the same studio, and made one explainer each. Which is which stays hidden until the vote closes. Each video stops at four questions and asks you first. Sound on.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Entries">
+    <button role="tab" aria-selected="true" data-entry="a">A</button>
+    <button role="tab" aria-selected="false" data-entry="b">B</button>
+    <button role="tab" aria-selected="false" data-entry="c">C</button>
+  </div>
+
+  <section class="entry" id="entry-a"><div class="socratic" data-video="a/move37.html" data-questions="a/socratic.json" data-title="Entry A"></div></section>
+  <section class="entry" id="entry-b" hidden><div class="socratic" data-video="b/move37.html" data-questions="b/socratic.json" data-title="Entry B"></div></section>
+  <section class="entry" id="entry-c" hidden><div class="socratic" data-video="c/move37.html" data-questions="c/socratic.json" data-title="Entry C"></div></section>
+
+  <section class="notes">
+    <p><strong>How it was run.</strong> The same brief and verified fact sheet for all three; each model ran in its own session at the same setting, on one CPU machine, rendering with <a href="https://github.com/FavioVazquez/showtime">showtime</a>. Each got the same two rounds of notes: one on phone-size type and layout, then one on the story (<a href="notes-round-2.txt">the exact note</a>: a cold open, a roadmap of the four steps, bridges between questions, a closing tie-back). No video names its maker. The brief and the fact sheet are in <a href="https://github.com/FavioVazquez/socratic-showtime/tree/main/move37">this folder</a>; each entry's sources are in its <code>claims.md</code>.</p>
+    <p><strong>The question.</strong> In MIT Technology Review (2 Oct 2026), AlphaGo co-author Thore Graepel argued that a chain of thought is intuition run longer, with no checkable record. Others answered that humans share those flaws, and that tools and method are what make reasoning trustworthy. The videos take no side.</p>
+  </section>
+
+  <footer>
+    <span>A video that asks before it tells. Made with <a href="https://github.com/FavioVazquez/showtime">showtime</a>.</span>
+    <a href="../">More Socratic videos</a>
+    <a href="https://github.com/FavioVazquez/socratic-showtime">Source</a>
+  </footer>
+</main>
+<script src="../socratic/socratic.js"></script>
+<script>
+  document.querySelectorAll(".tabs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".tabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
+      document.querySelectorAll(".entry").forEach(function (s) {
+        var on = s.id === "entry-" + b.getAttribute("data-entry");
+        if (!on) { var f = s.querySelector("iframe"); try { f.contentWindow.showtimePlayer.pause(); } catch (e) {} }
+        s.hidden = !on;
+      });
+    });
+  });
+</script>
+</body>
+</html>

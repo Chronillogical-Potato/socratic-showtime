@@ -1,0 +1,57 @@
+{
+  "title": "Move 37 and the chain of thought",
+  "questions": [
+    {
+      "id": "q1",
+      "pause": 24.84,
+      "resume": 27.84,
+      "prompt": "Which part of AlphaGo found Move 37?",
+      "choices": ["The intuition", "The search", "Both"],
+      "answer": 2,
+      "feedback": [
+        "The intuition is half of it. It rated the move one chance in ten thousand.",
+        "The search is half of it. It played a move the intuition nearly dismissed.",
+        "Both. The policy network gave it one chance in ten thousand. The search played it anyway."
+      ]
+    },
+    {
+      "id": "q2",
+      "pause": 53.28,
+      "resume": 56.28,
+      "prompt": "Is a chain of thought a search?",
+      "choices": ["Yes", "No", "Partly"],
+      "answer": 2,
+      "feedback": [
+        "It can look like one: it writes 'wait' and changes course, and it can be sampled many times.",
+        "Not quite nothing. It can turn mid-sentence, and it can be voted on.",
+        "Partly. It can write 'wait' and turn, and be sampled and voted on. Nothing checks each step."
+      ]
+    },
+    {
+      "id": "q3",
+      "pause": 78.70,
+      "resume": 81.70,
+      "prompt": "When Claude 3.7 Sonnet used a hint it was given, how often did its reasoning say so?",
+      "choices": ["About 90%", "About 50%", "About 25%"],
+      "answer": 2,
+      "feedback": [
+        "Far less often than that. Chen et al., 2025, measured about a quarter.",
+        "Lower. The writing named the hint about a quarter of the time.",
+        "About 25%. The rest of the time the writing never named the hint. Chen et al., 2025."
+      ]
+    },
+    {
+      "id": "q4",
+      "pause": 100.85,
+      "resume": 103.85,
+      "prompt": "What would make a chain of thought trustworthy?",
+      "choices": ["Thinking longer", "A record you can check", "A bigger model"],
+      "answer": 1,
+      "feedback": [
+        "Length is not the check. Longer chains of thought are not the same as reasoning.",
+        "A record you can check, and then checking it. Pencil, paper, and the method.",
+        "Size is not the check. The record is, and the habit of checking it."
+      ]
+    }
+  ]
+}

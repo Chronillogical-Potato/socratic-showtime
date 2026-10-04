@@ -1,0 +1,73 @@
+{
+  "title": "Move 37 and the chain of thought",
+  "questions": [
+    {
+      "id": "q1",
+      "pause": 22.727,
+      "resume": 25.727,
+      "prompt": "Which part of AlphaGo found Move 37?",
+      "choices": [
+        "The intuition",
+        "The search",
+        "Both"
+      ],
+      "answer": 2,
+      "feedback": [
+        "Not alone: the policy network (the intuition) rated Move 37 at 1 in 10,000. Left to itself, it would almost never play it.",
+        "Not alone: the search read ahead from moves the policy network proposed, and that network rated this one at 1 in 10,000.",
+        "Yes. The intuition gave it a 1 in 10,000 chance; the search read ahead and chose it anyway."
+      ]
+    },
+    {
+      "id": "q2",
+      "pause": 42.168,
+      "resume": 45.168,
+      "prompt": "Is a chain of thought a search?",
+      "choices": [
+        "Yes",
+        "No",
+        "Partly"
+      ],
+      "answer": 2,
+      "feedback": [
+        "Not quite. It can write \"wait\" and change course, but nothing checks each step, the way AlphaGo's search tested each line.",
+        "Not quite. It can backtrack in the text (\"Wait, the Pacific is west of Chile.\") and be sampled many times and voted on, which is search-like.",
+        "Yes, partly: it can change course and be sampled many times, but nothing checks each step. In the trace shown, one unchecked step led to \"Water\"; the point is on land."
+      ]
+    },
+    {
+      "id": "q3",
+      "pause": 70.489,
+      "resume": 73.489,
+      "prompt": "When Claude 3.7 Sonnet used a hint it was given, how often did its reasoning say so?",
+      "choices": [
+        "About 90%",
+        "About 50%",
+        "About 25%"
+      ],
+      "answer": 2,
+      "feedback": [
+        "Much lower: about 25% of the time on average (Chen et al., 2025).",
+        "Lower: about 25% on average. DeepSeek R1, in the same test, was 39% (Chen et al., 2025).",
+        "Right: about 25% of the time on average; DeepSeek R1, 39% (Chen et al., 2025)."
+      ]
+    },
+    {
+      "id": "q4",
+      "pause": 97.814,
+      "resume": 100.814,
+      "prompt": "What would make a chain of thought trustworthy?",
+      "choices": [
+        "Thinking longer",
+        "A record you can check, and checking it",
+        "A bigger model"
+      ],
+      "answer": 1,
+      "feedback": [
+        "Longer is the same process: more tokens, each from one pass, and still nothing checking them.",
+        "Yes: a record you can inspect, and someone checking it. Both sides of the debate point there; whether that makes it reasoning is the open question.",
+        "Size alone does not leave a record you can check; a bigger model's chain of thought is still unchecked."
+      ]
+    }
+  ]
+}
