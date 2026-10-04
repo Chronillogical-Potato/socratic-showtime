@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ramanujan's hidden step · Socratic</title>
+<meta name="description" content="Ramanujan's 1911 nested radical, as a video that stops and makes you take each step.">
+<meta property="og:title" content="Ramanujan's hidden step">
+<meta property="og:description" content="A video that asks before it tells. Made by Claude Opus 5.5 with showtime.">
+<meta property="og:image" content="poster.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="../socratic/socratic.css">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #0b0f17; color: #eef1f6; font-family: Inter, system-ui, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: clamp(20px, 4vw, 48px) 16px 48px; display: grid; gap: 20px; }
+  header { display: grid; gap: 8px; }
+  .kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #f2c14e; }
+  h1 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: clamp(28px, 5vw, 48px); line-height: 1.1; margin: 0; text-wrap: balance; }
+  .lede { color: #9aa4b5; font-size: clamp(15px, 2vw, 18px); line-height: 1.5; margin: 0; max-width: 65ch; }
+  .notes { display: grid; gap: 10px; color: #9aa4b5; font-size: 15px; line-height: 1.55; max-width: 70ch; }
+  .notes a, footer a { color: #eef1f6; }
+  footer { color: #6f7a8c; font-size: 13px; border-top: 1px solid #2a3344; padding-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">Socratic · 1</div>
+    <h1>Ramanujan's hidden step</h1>
+    <p class="lede">In 1911 Ramanujan asked readers of the Journal of the Indian Mathematical Society for the value of an infinite nest of square roots. This video stops at each step and asks you first. Sound on.</p>
+  </header>
+
+  <div class="socratic" data-video="ramanujan.html" data-questions="socratic.json" data-title="Ramanujan's hidden step"></div>
+
+  <section class="notes">
+    <p><strong>Sources.</strong> Question 289, <em>Journal of the Indian Mathematical Society</em> 3 (1911), p. 90; his solution, vol. 4 (1912), p. 226; <em>Collected Papers of Srinivasa Ramanujan</em> (Cambridge, 1927), pp. 323 and 348; A. Herschfeld, "On infinite radicals", <em>American Mathematical Monthly</em> 42 (1935). Chronology: D. J. Jones, <a href="https://arxiv.org/abs/1707.06139">arXiv:1707.06139</a>. Every fact on screen is in <a href="claims.md">claims.md</a>.</p>
+    <p>Prefer a plain video? <a href="ramanujan-socratic-1920x1080.mp4">The MP4</a> has a "pause and think" countdown at each question instead.</p>
+  </section>
+
+  <footer>
+    <span>A video that asks before it tells. Made by Claude Opus 5.5 with <a href="https://github.com/FavioVazquez/showtime">showtime</a>.</span>
+    <a href="../">More Socratic videos</a>
+    <a href="https://github.com/FavioVazquez/socratic-showtime">Source</a>
+  </footer>
+</main>
+<script src="../socratic/socratic.js"></script>
+</body>
+</html>
