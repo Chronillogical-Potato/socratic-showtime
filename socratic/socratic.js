@@ -24,17 +24,14 @@
     frame.title = root.getAttribute("data-title") || "Video";
     frame.setAttribute("allow", "autoplay; fullscreen");
     var stage = el("div", "soc-stage");
-    var shade = el("div", "soc-shade");
-    shade.hidden = true;
     var card = el("div", "soc-card");
     card.hidden = true;
     card.setAttribute("role", "dialog");
     card.setAttribute("aria-live", "polite");
     stage.appendChild(frame);
-    stage.appendChild(shade);
-    stage.appendChild(card);
     var bar = el("div", "soc-bar");
     root.appendChild(stage);
+    root.appendChild(card);
     root.appendChild(bar);
 
     var qs = [], state = {}, player = null, open = null, lastT = 0;
@@ -51,6 +48,7 @@
       player = w.showtimePlayer;
       Promise.resolve(player.ready).then(function () {
         player.on("frame", tick);
+        setInterval(tick, 120);   // a slow or throttled page may skip frames: still catch every question
         player.on("seek", function () {
           // jumping back re-arms the questions after the new time; jumping ahead skips the ones passed
           var t = player.currentTime;
@@ -69,6 +67,7 @@
         var q = qs[i], s = state[q.id];
         if (!s.answer && !s.passed && lastT <= q.pause + 0.001 && t >= q.pause - 0.02) {
           player.pause();
+          if (t > q.pause + 0.1) player.seek(q.pause);   // caught late: show the question's own frame
           ask(q);
           break;
         }
@@ -93,7 +92,8 @@
       card.appendChild(list);
       card.appendChild(el("div", "soc-hint", "Pick one to go on"));
       card.hidden = false;
-      shade.hidden = false;
+      root.classList.add("is-asking");
+      if (card.scrollIntoView) card.scrollIntoView({ block: "nearest", behavior: "smooth" });
       var first = list.querySelector("button");
       if (first) first.focus({ preventScroll: true });
     }
@@ -125,7 +125,7 @@
       if (!q) return;
       open = null;
       card.hidden = true;
-      shade.hidden = true;
+      root.classList.remove("is-asking");
       lastT = q.resume;
       Promise.resolve(player.seek(q.resume)).then(function () {
         state[q.id].passed = true;

@@ -3,24 +3,25 @@
   color: var(--soc-fg); font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
 .soc-stage { position: relative; width: 100%; aspect-ratio: 16 / 9; max-width: 100%; background: #000; border-radius: 14px;
   overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); }
+.socratic.is-asking .soc-stage { box-shadow: 0 0 0 2px var(--soc-accent), 0 30px 80px rgba(0, 0, 0, 0.45); }
+@media (max-width: 700px) { .soc-stage { aspect-ratio: 2 / 3; } }
+.soc-card[hidden] { display: none; }
 .soc-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.soc-shade { position: absolute; inset: 0; background: rgba(5, 8, 14, 0.78); backdrop-filter: blur(3px); animation: soc-fade .2s ease-out; }
-@keyframes soc-fade { from { opacity: 0; } }
-.soc-card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(560px, calc(100% - 32px));
-  max-height: calc(100% - 24px); overflow: auto; background: var(--soc-panel); border: 1px solid var(--soc-rule);
-  border-radius: 16px; padding: clamp(14px, 3vw, 26px); backdrop-filter: blur(6px); display: grid; gap: 12px;
-  animation: soc-in .22s ease-out; }
-@keyframes soc-in { from { opacity: 0; transform: translate(-50%, -46%); } }
+.soc-card { margin-top: 14px; background: var(--soc-panel); border: 1px solid var(--soc-accent);
+  border-radius: 16px; padding: clamp(14px, 3vw, 24px); display: grid; gap: 12px; animation: soc-in .22s ease-out; }
+@keyframes soc-in { from { opacity: 0; transform: translateY(6px); } }
 .soc-kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--soc-accent); }
 .soc-prompt { font-size: clamp(17px, 2.6vw, 24px); line-height: 1.3; font-weight: 600; text-wrap: balance; }
-.soc-choices { display: grid; gap: 8px; }
+.soc-choices { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
 .soc-choice { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: inherit; font-size: clamp(15px, 2.2vw, 18px);
   color: var(--soc-fg); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--soc-rule); border-radius: 10px;
   padding: 10px 14px; cursor: pointer; transition: border-color .15s, background .15s; }
 .soc-choice:hover:not(:disabled), .soc-choice:focus-visible { border-color: var(--soc-accent); background: rgba(242, 193, 78, 0.08); outline: none; }
 .soc-choice:disabled { cursor: default; opacity: .55; }
-.soc-choice.is-right { opacity: 1; border-color: var(--soc-right); background: rgba(95, 211, 160, 0.12); }
-.soc-choice.is-wrong { opacity: 1; border-color: var(--soc-wrong); background: rgba(255, 138, 107, 0.10); }
+.soc-choice.is-right { opacity: 1; border-color: var(--soc-right); box-shadow: inset 0 0 0 1px var(--soc-right); background: rgba(95, 211, 160, 0.16); }
+.soc-choice.is-right::after { content: "\2713"; margin-left: auto; color: var(--soc-right); font-weight: 700; }
+.soc-choice.is-wrong { opacity: 1; border-color: var(--soc-wrong); box-shadow: inset 0 0 0 1px var(--soc-wrong); background: rgba(255, 138, 107, 0.14); }
+.soc-choice.is-wrong::after { content: "\2717"; margin-left: auto; color: var(--soc-wrong); font-weight: 700; }
 .soc-key { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; flex: none;
   font-size: 13px; font-weight: 700; background: rgba(255, 255, 255, 0.08); color: var(--soc-dim); }
 .soc-hint { font-size: 13px; color: var(--soc-dim); }
